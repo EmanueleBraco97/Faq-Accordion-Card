@@ -1,28 +1,27 @@
-import { useState } from "react";
+import React from "react";
 
-const SingleFaq = (props) => {
-  const [isAccordionOpen, setIsAccordionOpen] = useState(false);
+const Faq = (props) => {
 
   const toggle = () => {
-    setIsAccordionOpen(!isAccordionOpen);
-  };
+    props.toggleFaq(props.id)
+  }
 
   return (
-      <div className="accordion-bottom-structure">
+    <div className="accordion-bottom-structure">
         <div className="single-item-content">
-          <span className={!isAccordionOpen ? "text-normal" : "text-bold"}>
+          <span className={!props.open ? "text-normal" : "text-bold"}>
             {props.title}
           </span>
           <span
             className={
-              !isAccordionOpen ? "description-not-show" : "description-show"
+              !props.open ? "description-not-show" : "description-show"
             }
           >
             {props.description}
           </span>
         </div>
 
-        {!isAccordionOpen ? (
+        {!props.open ? (
           <button onClick={toggle} className="button-icon-down">
             <svg width="10" height="7" xmlns="http://www.w3.org/2000/svg">
               <path
@@ -51,4 +50,4 @@ const SingleFaq = (props) => {
   );
 };
 
-export default SingleFaq;
+export default Faq
